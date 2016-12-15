@@ -1,0 +1,43 @@
+{
+  "name": "qtechnologies/shell_profile",
+  "version": "1.0.0",
+  "author": "Q-Technologies",
+  "summary": "Puppet module to manage system wide custom shell profiles",
+  "license": "Apache-2.0",
+  "tags": ["sysstat","monitoring"],
+  "source": "https://github.com/Q-Technologies/puppet-shell_profile.git",
+  "project_page": "https://github.com/Q-Technologies/puppet-shell_profile",
+  "issues_url": "https://github.com/Q-Technologies/puppet-shell_profile/issues",
+  "dependencies": [],
+  "operatingsystem_support": [
+    {
+      "operatingsystem":"Darwin",
+      "operatingsystemrelease": [
+        "15"
+      ]
+    },
+    {
+      "operatingsystem":"Debian",
+      "operatingsystemrelease": [
+        "7.0",
+        "8.0"
+      ]
+    },
+    {
+      "operatingsystem":"RedHat",
+      "operatingsystemrelease": [
+        "6.0",
+        "7.0"
+      ]
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [ 
+        "11",
+        "12"
+     ]
+    }
+  ],
+  "data_provider": "hiera"
+}
+

@@ -1,0 +1,44 @@
+###############################################################################
+#                                                                             #
+#                      *** FILE MANAGED BY PUPPET ***                         #
+#                                                                             #
+#                    Manual changes will be overwritten                       #
+#                                                                             #
+###############################################################################
+
+set -o vi
+set -a
+alias root='sudo bash -l'
+alias ll='ls -la'
+alias more='less'
+
+if test "$UID" -eq 0 ; then
+    PS1="\u@\h:\w\n\t # "
+    PS1="\e[0;31m\u@\h:\w\e[0m\n\t # "
+else
+    PS1="\u@\h:\w\n\t $ "
+    PS1="\e[0;34m\u@\h:\w\e[0m\n\t $ "
+fi
+
+PATH=/usr/bin:/bin:/usr/sbin:/sbin
+PATH=$PATH:/usr/X11R6/bin:/usr/local/bin:/usr/X11/bin
+
+MANPATH=/usr/share/man:/usr/local/man:/usr/local/share/man
+
+case $(uname) in
+Darwin)
+    PERL5LIB=~/Library/perl/lib/perl5:~/Library/perl/lib/perl5/site_perl
+    PATH=$PATH:/opt/local/bin:/opt/oss/bin
+    MANPATH=$MANPATH:/opt/local/share/man:/opt/oss/share/man
+    MANPATH=$MANPATH:/usr/X11/man:/usr/X11/share/X11/doc/hardcopy/man
+    MANPATH=$MANPATH:/usr/X11/share/man
+    ;;
+*)
+    ;;
+esac
+
+PROMPT_COMMAND='printf "\033]0;%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+
+# setup pdsh for cluster users
+export PDSH_RCMD_TYPE='ssh'
+export WCOLL='/etc/pdsh/machines'
