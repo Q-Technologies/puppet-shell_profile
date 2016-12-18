@@ -26,6 +26,14 @@ class shell_profile {
         }
     }
 
+    if $osfamily == 'Debian' {
+        file {'/etc/bash.bashrc':
+            ensure  => file,
+            mode    => '0444',
+            source  => "puppet:///modules/shell_profile/bashrc.debian",
+        }
+    }
+
     file { $local_bashrc:
           ensure  => file,
           mode    => '0644',
