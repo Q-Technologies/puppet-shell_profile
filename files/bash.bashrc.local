@@ -42,3 +42,15 @@ PROMPT_COMMAND='printf "\033]0;%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PW
 # setup pdsh for cluster users
 export PDSH_RCMD_TYPE='ssh'
 export WCOLL='/etc/pdsh/machines'
+
+PERL_MM_USE_DEFAULT=1
+PERL_LOCAL_LIB_ROOT="/usr/local/perl";
+PERL_MB_OPT="--install_base $PERL_LOCAL_LIB_ROOT";
+PERL_MM_OPT="INSTALL_BASE=$PERL_LOCAL_LIB_ROOT";
+PATH="$PERL_LOCAL_LIB_ROOT/bin:$PATH";
+PERL5LIB=$PERL_LOCAL_LIB_ROOT/lib/perl5:$PERL_LOCAL_LIB_ROOT/lib/perl5/site_perl
+
+if [[ -r /perlbrew/etc/bashrc ]]; then
+    PERLBREW_ROOT=/perlbrew
+    source /perlbrew/etc/bashrc
+fi
